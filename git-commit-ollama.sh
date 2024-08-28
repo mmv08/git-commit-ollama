@@ -26,6 +26,11 @@ gcm-llm() {
     echo "Generating..."
 
     diff=$(git --no-pager diff --cached)
+    if [ -z "$diff" ]; then
+        echo "No staged changes found. Please stage your changes before committing."
+        return 1
+    fi
+
     prompt="Here is a diff of all staged changes: $diff"
 
     commit_message=$(run_llm "$prompt")
@@ -48,8 +53,12 @@ gcm-llm() {
                 fi
                 ;;
             e|E )
-                read_input "Enter your commit message: "
-                commit_message=$REPLY
+                # Use an editor for multi-line commit messages
+                temp_file=$(mktemp)
+                echo "$commit_message" > "$temp_file"
+                ${EDITOR:-vim} "$temp_file"
+                commit_message=$(cat "$temp_file")
+                rm "$temp_file"
                 if [ -n "$commit_message" ] && git commit -m "$commit_message"; then
                     echo "Changes committed successfully with your message!"
                     return 0
