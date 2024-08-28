@@ -24,7 +24,7 @@ echo "Generating..."
 diff=$(git --no-pager diff --cached)
 if [ -z "$diff" ]; then
     echo "No staged changes found. Please stage your changes before committing."
-    return 1
+    exit 1
 fi
 
 prompt="Diff of all staged changes: $diff"
@@ -66,7 +66,7 @@ while true; do
     p | P)
         read_input "Enter additional context for the LLM: "
         additional_context=$REPLY
-        new_prompt="Diff of all staged changes: $diff. Additional context from the developer: $additional_context"
+        new_prompt="Additional context from the developer: $additional_context. $prompt"
         commit_message=$(run_llm "$new_prompt")
         ;;
     r | R)
