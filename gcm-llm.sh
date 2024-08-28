@@ -34,7 +34,7 @@ prompt="Here is a diff of all staged changes: $diff"
 commit_message=$(run_llm "$prompt")
 
 while true; do
-    echo -e "\nProposed commit message:"
+    echo "\nProposed commit message:"
     echo "$commit_message"
 
     read_input "Do you want to (a)ccept, (e)dit, (p)rovide additional context to the LLM, (r)egenerate, or (c)ancel? "

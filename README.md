@@ -23,3 +23,13 @@ ollama create gitcommit -f ./Modelfile
 ```
 cp gcm-llm.sh $HOME/.local/bin/gcm-llm
 ```
+
+## Usage
+
+```
+# Stage your changes
+git add .
+
+# Generate a commit message
+gcm-llm
+```
