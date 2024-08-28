@@ -1,9 +1,3 @@
-# AI-powered Git Commit Function
-# Copy paste this gist into your ~/.bashrc or ~/.zshrc to gain the `gcm` command. It:
-# 1) gets the current staged changed diff
-# 2) sends them to an LLM to write the git commit message
-# 3) allows you to easily accept, edit, regenerate, cancel
-# 4) also adds a global run_llm command that accepts a prompt
 # based on https://gist.github.com/karpathy/1dd0294ef9567971c1e4348a90d69285
 
 run_llm() {
