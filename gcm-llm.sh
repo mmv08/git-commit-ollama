@@ -27,7 +27,7 @@ if [ -z "$diff" ]; then
     return 1
 fi
 
-prompt="Here is a diff of all staged changes: $diff"
+prompt="Diff of all staged changes: $diff"
 
 commit_message=$(run_llm "$prompt")
 
@@ -66,7 +66,7 @@ while true; do
     p | P)
         read_input "Enter additional context for the LLM: "
         additional_context=$REPLY
-        new_prompt="Here is a diff of all staged changes: $diff. Additional context from the developer: $additional_context"
+        new_prompt="Diff of all staged changes: $diff. Additional context from the developer: $additional_context"
         commit_message=$(run_llm "$new_prompt")
         ;;
     r | R)
