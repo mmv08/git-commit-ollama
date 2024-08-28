@@ -1,4 +1,8 @@
 # based on https://gist.github.com/karpathy/1dd0294ef9567971c1e4348a90d69285
+# I edited the original one because I found the original one to produce unreliable outputs
+# when used with ollama or large diffs
+# I added a system prompt to help guide the LLM
+# (I'm not an LLM expert, so probably this could be improved)
 
 run_llm() {
     ollama run gitcommit "$1"
